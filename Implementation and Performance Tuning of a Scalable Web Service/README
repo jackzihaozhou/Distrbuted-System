@@ -1,0 +1,27 @@
+The main classes (Cloud, ServerLib, Database, ClientSim) and the sample
+database file (db1.txt) are in the lib directory.  
+
+Before running, you will need to add the absolute path of workingdirectory and the absolute path of the lib directory to the CLASSPATH
+environment variable, e.g., from your working directory:
+
+cd workingdirectory
+export CLASSPATH=$PWD:$PWD/../lib
+
+To run the program:
+
+java Cloud <port> <db_file> <rand_spec> <hour> [<duration>]
+
+Here, <port> specifies the port that the Java RMI registry should use. The <db_file> parameter
+specifies a text file that will be loaded as the contents of the backend database. A sample file
+(db1.txt) is provided in the lib directory. The <hour> parameter is the time of day to be reported
+by the simulation (0-24). The optional <duration> parameter indicates the number of seconds to
+run the experiment (default=30 seconds).
+
+To run the sample, simply try:
+	java Cloud 15440 lib/db1.txt c-2000-1 12
+
+This will launch the "Cloud" service, load the database with the items in 
+lib/db1.txt, and start simulating clients arriving at a constant rate every
+2000 ms.  A single instance of the sample Server will b erun as a "VM" 
+(actually a spearate process).  
+
