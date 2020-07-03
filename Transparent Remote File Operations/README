@@ -1,0 +1,18 @@
+To use the interposing library, try (if using BASH shell):
+	LD_PRELOAD=./interpose/mylib.so ./tools/440read README
+or (if using CSH, TCSH, ...):
+	env LD_PRELOAD=./interpose/mylib.so ./tools/440read README
+
+Note that the 440tree tool uses the getdirtree function 
+implemented in libdirtree.so in the lib directory.  Please
+add the absolute path of this directory to LD_LIBRARY_PATH
+to make sure that the system can find the library, e.g. on BASH:
+	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH;$PWD/lib"
+or if using CSH, TCSH, ...:
+	setenv LD_LIBRARY_PATH "$LD_LIBRARY_PATH;$PWD/lib"
+
+- Usage: 
+by simply running "make" in your working directory, both library and server are built:
+
+cd ./workingdirectory
+make
